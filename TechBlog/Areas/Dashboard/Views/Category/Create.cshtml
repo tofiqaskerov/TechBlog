@@ -1,0 +1,28 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers 
+
+@model Category
+
+<style>
+    .error-span{
+        color: red;
+        font-size: 18px;
+        font-weight: 650;
+        margin-left:5px;
+    }
+</style>
+<div class="card shadow my-5">
+    <div class="card-body">
+        <form class="form-group" method="post">
+            <div class="col-lg-6">
+                <input class="form-control" asp-for="Name" type="text" placeholder="Add Category Name" />
+                <span class="error-span" asp-validation-for="Name"></span>
+                <br />
+                            
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+                 <a asp-action="Index" class="btn btn-primary"> Return to Category</a>
+           
+            </div>
+
+        </form>
+    </div>
+</div>
