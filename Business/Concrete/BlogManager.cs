@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
 using Entities;
 using Entities.Concrete;
 using System;
@@ -11,29 +12,89 @@ namespace Business.Concrete
 {
     public class BlogManager : IBlogService
     {
-        public void Add(Blog blog)
+        private readonly IBlogDal _blogDal;
+
+        public BlogManager(IBlogDal blogDal)
         {
-            throw new NotImplementedException();
+            _blogDal = blogDal;
         }
 
-        public void Delete(int blogId)
+        public void Add(Blog blog)
         {
-            throw new NotImplementedException();
+            try
+            {
+                blog.SeoURL = "test";
+                blog.PublishDate = DateTime.Now;
+                blog.UpdateDate = DateTime.Now;
+                _blogDal.Add(blog);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Delete(Blog blog)
+        {
+            try
+            {
+                _blogDal.Delete(blog);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Blog> GetAll()
         {
-            throw new NotImplementedException();
+           return _blogDal.GetAll();    
+        }
+
+        public List<Blog> GetAllBlogIncludeCategory()
+        {
+            try
+            {
+                return _blogDal.GetAllBlogIncludeCategory();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Blog GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _blogDal.Get(x => x.Id == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+       
 
         public void Update(Blog blog)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var oldBlog = _blogDal.Get(x =>x.Id == blog.Id);
+                blog.UpdateDate = DateTime.Now;
+                blog.PublishDate = oldBlog.PublishDate;
+                blog.Hit = 1;
+                blog.SeoURL = "test";
+                _blogDal.Update(blog);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

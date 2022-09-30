@@ -12,8 +12,9 @@ namespace Business.Abstract
     {
         void Add(Blog blog);
         void Update(Blog blog);
-        void Delete(int blogId);
+        void Delete(Blog blog);
         List<Blog> GetAll();
         Blog GetById(int id);
+        List<Blog> GetAllBlogIncludeCategory();
     }
 }

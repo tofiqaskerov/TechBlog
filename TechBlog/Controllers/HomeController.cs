@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TechBlog.Models;
 
@@ -7,16 +8,17 @@ namespace TechBlog.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IBlogService _blogService;
+        public HomeController(ILogger<HomeController> logger, IBlogService blogService)
         {
             _logger = logger;
+            _blogService = blogService;
         }
 
         public IActionResult Index()
         {
-
-            return View();
+            var blogs = _blogService.GetAllBlogIncludeCategory();
+            return View(blogs);
         }
 
         public IActionResult Privacy()

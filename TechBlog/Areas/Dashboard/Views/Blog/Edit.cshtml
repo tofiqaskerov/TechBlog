@@ -1,0 +1,84 @@
+﻿@model Blog
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    input {
+        margin-bottom: 10px;
+    }
+    span{
+        font-weight:600;
+        padding-bottom:10px;
+        display:inline-block;
+    }
+</style>
+
+<div class="card shadow my-5">
+    <div class="card-body">
+        <form class="form-group" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-6 my-2">
+                    <span>Title</span>
+                    <input class="form-control" placeholder="Title" type="text" asp-for="Title" />
+                </div>
+                <div class="col-lg-6 my-2">
+                    <span>Author</span>
+                    <input class="form-control" placeholder="Author" type="text" asp-for="Author" />
+                </div>
+                <div class="col-lg-6 my-3">
+                    <span>PhotoUrl</span>
+                    <input class="form-control" type="file" name="NewPhotoURL" />
+                    <br />
+
+                    <input type="hidden" name="oldPhoto" value="@Model.PhotoURl" />
+
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                </div>
+                <div class="input-group my-2">
+                    <div class="card">
+                        <div class="card-body pt-0">
+                            <br />
+                            @{
+
+                                <img height="200" src="@Model.PhotoURl" />
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 my-3 ">
+                    <span>Category</span>
+
+                    <select class="form-control" asp-for="CategoryId">
+
+                        @foreach (var category in ViewData["Categories"] as List<Category>)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+
+                    </select>
+                </div>
+                <div class="col-lg-12 my-2">
+                    <span>Description</span>
+                    <textarea id="editor" class="form-control" placeholder="Description" type="text" asp-for="Description"> </textarea>
+                </div>
+
+
+
+            </div>
+            <input type="submit" value="Update" class="btn btn-outline-success mt-4" />
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+}

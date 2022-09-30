@@ -19,6 +19,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
         public IActionResult Index()
         {
                var categories = _categoryService.GetAll();
+                ViewBag.Categories = categories.Count();
                return View(categories);
         }
 
@@ -33,14 +34,11 @@ namespace TechBlog.Areas.Dashboard.Controllers
             return View();
         }
 
-        // POST: CategoryController/Create
         [HttpPost]
         public IActionResult Create(Category category)
         {
-
             try
             {
-
                 var selectedCategory = _categoryService.GetByName(category.Name);   
                 if(category.Name != null   )
                 {
@@ -71,17 +69,26 @@ namespace TechBlog.Areas.Dashboard.Controllers
         // GET: CategoryController/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+            var category = _categoryService.GetById(id);
+            return View(category);
         }
 
         // POST: CategoryController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(Category category)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var selectedCategory = _categoryService.GetByName(category.Name);
+                if(selectedCategory != null && category.Id != selectedCategory.Id)
+                {
+                    ModelState.AddModelError("Name", "Cannot have a category with the same name");
+                    return View(category);
+                }
+
+                _categoryService.Update(category);
+                return RedirectToAction("Index");
+
             }
             catch
             {

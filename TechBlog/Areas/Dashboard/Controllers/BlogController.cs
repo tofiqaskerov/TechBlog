@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,17 +9,21 @@ namespace TechBlog.Areas.Dashboard.Controllers
     public class BlogController : Controller
     {
         private readonly IBlogService _blogService;
-      
+        private readonly ICategoryService _categoryService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BlogController(IBlogService blogService)
+        public BlogController(IBlogService blogService, IWebHostEnvironment webHostEnvironment, ICategoryService categoryService)
         {
             _blogService = blogService;
+            _webHostEnvironment = webHostEnvironment;
+            _categoryService = categoryService;
         }
 
         // GET: BlogController
         public IActionResult Index()
         {
-            return View();
+            var blogs = _blogService.GetAllBlogIncludeCategory();
+            return View(blogs);
         }
 
         // GET: BlogController/Details/5
@@ -26,21 +31,31 @@ namespace TechBlog.Areas.Dashboard.Controllers
         {
             return View();
         }
-        
+
         [HttpGet]
         public IActionResult Create()
         {
-          
+            var categories = _categoryService.GetAll();
+            ViewData["Categories"] = categories;
             return View();
         }
 
         // POST: BlogController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(Blog blog, IFormFile NewPhotoURL)
         {
+
+            string path = "/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
+            using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
+            {
+                NewPhotoURL.CopyTo(fileStream);
+            }
             try
             {
+                blog.PhotoURl = path;
+                blog.Hit = 1;
+                _blogService.Add(blog);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -50,19 +65,36 @@ namespace TechBlog.Areas.Dashboard.Controllers
         }
 
         // GET: BlogController/Edit/5
+        [HttpGet]
         public IActionResult Edit(int id)
         {
-            return View();
+            var blog = _blogService.GetById(id);
+            var categories = _categoryService.GetAll();
+            ViewData["Categories"] = categories;
+            return View(blog);
         }
 
         // POST: BlogController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(Blog blog, IFormFile NewPhotoURL, string? oldPhoto)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                if (NewPhotoURL != null)
+                {
+                    string path = "/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
+                    using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        NewPhotoURL.CopyTo(fileStream);
+                    }
+                    blog.PhotoURl = path;
+
+                }
+                else blog.PhotoURl = oldPhoto;
+
+                _blogService.Update(blog);
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -71,19 +103,17 @@ namespace TechBlog.Areas.Dashboard.Controllers
         }
 
         // GET: BlogController/Delete/5
-        public IActionResult Delete(int id)
-        {
-            return View();
-        }
+
 
         // POST: BlogController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var blog = _blogService.GetById(id);
+                _blogService.Delete(blog);
+                return RedirectToAction("Index");
             }
             catch
             {
