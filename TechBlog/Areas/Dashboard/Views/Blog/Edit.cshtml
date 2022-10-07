@@ -2,9 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <style>
-    input {
-        margin-bottom: 10px;
-    }
+    
     span{
         font-weight:600;
         padding-bottom:10px;
@@ -24,6 +22,7 @@
                     <span>Author</span>
                     <input class="form-control" placeholder="Author" type="text" asp-for="Author" />
                 </div>
+               
                 <div class="col-lg-6 my-3">
                     <span>PhotoUrl</span>
                     <input class="form-control" type="file" name="NewPhotoURL" />
@@ -32,18 +31,6 @@
                     <input type="hidden" name="oldPhoto" value="@Model.PhotoURl" />
 
                     <input type="hidden" name="Id" value="@Model.Id" />
-                </div>
-                <div class="input-group my-2">
-                    <div class="card">
-                        <div class="card-body pt-0">
-                            <br />
-                            @{
-
-                                <img height="200" src="@Model.PhotoURl" />
-
-                            }
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-6 my-3 ">
                     <span>Category</span>
@@ -57,6 +44,19 @@
 
                     </select>
                 </div>
+                <div class="input-group my-2">
+                    <div class="card">
+                        <div class="card-body pt-0">
+                            <br />
+                            @{
+
+                                <img height="200" src="@Model.PhotoURl" />
+
+                            }
+                        </div>
+                    </div>
+                </div>
+              
                 <div class="col-lg-12 my-2">
                     <span>Description</span>
                     <textarea id="editor" class="form-control" placeholder="Description" type="text" asp-for="Description"> </textarea>
@@ -65,7 +65,11 @@
 
 
             </div>
-            <input type="submit" value="Update" class="btn btn-outline-success mt-4" />
+            <div class="action mt-3" >
+                <input type="submit" value="Update" class="btn btn-outline-success " />
+                <a asp-action="Index" class="btn btn-primary"> Return to Blog</a>
+            </div>
+            
         </form>
     </div>
 </div>

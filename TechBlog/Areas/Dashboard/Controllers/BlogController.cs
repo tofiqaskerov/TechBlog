@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace TechBlog.Areas.Dashboard.Controllers
 {
@@ -29,6 +30,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
         // GET: BlogController/Details/5
         public IActionResult Details(int id)
         {
+             
             return View();
         }
 
@@ -46,22 +48,24 @@ namespace TechBlog.Areas.Dashboard.Controllers
         public IActionResult Create(Blog blog, IFormFile NewPhotoURL)
         {
 
-            string path = "/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
-            using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
-            {
-                NewPhotoURL.CopyTo(fileStream);
-            }
-            try
-            {
-                blog.PhotoURl = path;
-                blog.Hit = 1;
-                _blogService.Add(blog);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
+                string path = "/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
+                using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    NewPhotoURL.CopyTo(fileStream);
+                }
+                try
+                {
+                    blog.PhotoURl = path;
+                    _blogService.Add(blog);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
+            
+          
         }
 
         // GET: BlogController/Edit/5

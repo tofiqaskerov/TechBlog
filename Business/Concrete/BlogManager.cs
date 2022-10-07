@@ -68,7 +68,11 @@ namespace Business.Concrete
         {
             try
             {
-                return _blogDal.Get(x => x.Id == id);
+
+                var blog = _blogDal.Get(x => x.Id == id);
+                blog.Hit += 1;
+                _blogDal.Update(blog);
+                return blog;
             }
             catch (Exception)
             {

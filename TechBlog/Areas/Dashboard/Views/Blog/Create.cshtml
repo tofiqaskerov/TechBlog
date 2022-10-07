@@ -1,10 +1,8 @@
 ﻿@model Blog
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <style>
-    input {
-        margin-bottom: 10px;
-    }
+     
 </style>
 
 <div class="card shadow my-5">
@@ -13,22 +11,24 @@
             <div class="row">
                 <div class="col-lg-6 my-2">
                     <input class="form-control" placeholder="Title" type="text" asp-for="Title" />
+                    <span class="error-span" asp-validation-for="Title"></span>
                 </div>
                 <div class="col-lg-6 my-2">
                     <input class="form-control" placeholder="Author" type="text" asp-for="Author" />
                 </div>
-                 <div class="col-lg-6 my-3">
+                <div class="col-lg-6 my-3">
                     <span>PhotoUrl</span>
-                    <input class="form-control" type="file"  name="NewPhotoURL" />
+                    <input @*style="width:30%"*@ class="form-control" type="file" name="NewPhotoURL" />
+                     <span style="color: red;">@ViewBag.PhotoEmpty</span>
                 </div>
-                 <div  class="col-lg-6 my-3 ">
+                <div class="col-lg-6 my-3 ">
                     <span>Category</span>
 
-                    <select  class="form-control" asp-for="CategoryId">
+                    <select class="form-control" asp-for="CategoryId">
 
                         @foreach (var category in ViewData["Categories"] as List<Category>)
                         {
-                          <option value="@category.Id">@category.Name</option>                          
+                            <option value="@category.Id">@category.Name</option>
                         }
 
                     </select>
@@ -36,24 +36,27 @@
                 <div class="col-lg-12 my-2">
                     <textarea id="editor" class="form-control" placeholder="Description" type="text" asp-for="Description"> </textarea>
                 </div>
-               
-               
-               
+
+
+
             </div>
-            <input type="submit" value="Create" class="btn btn-outline-success mt4" />
+            <div class="action mt-3">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+                <a asp-action="Index" class="btn btn-primary"> Return to Blog</a>
+            </div>
         </form>
     </div>
 </div>
 
 
 @section Scripts {
-<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 }

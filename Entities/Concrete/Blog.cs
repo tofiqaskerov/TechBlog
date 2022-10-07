@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
+
     public class Blog : IEntity
     {
         public int Id { get; set; }
         public string PhotoURl { get; set; }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public string Author { get; set; }

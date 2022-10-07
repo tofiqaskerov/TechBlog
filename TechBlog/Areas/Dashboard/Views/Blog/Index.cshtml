@@ -1,11 +1,115 @@
 ﻿@model IEnumerable<Blog>
+<style>
+    .add-btn{
+        width: 50px;
+        height:50px;
+        margin-top:20px;
+        cursor:pointer;
+    }
+    .icon-btn {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #cdcdcd;
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      position: relative;
+      transition: width 0.2s ease-in-out;
+      font-weight: 500;
+      font-family: inherit;
+    }
+
+    .add-btn:hover {
+      width: 120px;
+    }
+
+    .add-btn::before,
+    .add-btn::after {
+      transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+      content: "";
+      position: absolute;
+      height: 4px;
+      width: 10px;
+      top: calc(50% - 2px);
+      background: seagreen;
+    }
+
+    .add-btn::after {
+      right: 14px;
+      overflow: hidden;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+
+    .add-btn::before {
+      left: 14px;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    .icon-btn:focus {
+      outline: none;
+    }
+
+    .btn-txt {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .add-btn:hover::before,
+    .add-btn:hover::after {
+      width: 4px;
+      border-radius: 2px;
+    }
+
+    .add-btn:hover .btn-txt {
+      opacity: 1;
+    }
+
+    .add-icon::after,
+    .add-icon::before {
+      transition: all 0.2s ease-in-out;
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 2px;
+      top: calc(50% - 10px);
+      background: seagreen;
+      overflow: hidden;
+    }
+
+    .add-icon::before {
+      left: 22px;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    .add-icon::after {
+      right: 22px;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+
+    .add-btn:hover .add-icon::before {
+      left: 15px;
+      height: 4px;
+      top: calc(50% - 2px);
+    }
+
+    .add-btn:hover .add-icon::after {
+      right: 15px;
+      height: 4px;
+      top: calc(50% - 2px);
+    }
+</style>
 
 
-<a href="/dashboard/blog/create" class="btn btn-success btn-icon-split">
-    <span class="icon text-white-50">
-        <i class="fas fa-plus"></i>
-    </span>
-    <span class="text">Create</span>
+
+<a class="add-btn" href="/dashboard/blog/create">
+    <button class="icon-btn add-btn">
+        <div class="add-icon"></div>
+        <div class="btn-txt">Add</div>
+    </button>
 </a>
 
 <!-- DataTales Example -->
@@ -45,19 +149,19 @@
                     {
                         <tr>
                             <td>@blog.Title</td>
-                            <td>@Html.Raw(@blog.Description)</td>
+                            <td>@Html.Raw(@blog.Description).....</td>
                             <td>@blog.Author</td>
                             <td>@blog.Hit</td>
                             <td>
-                                <img src="@blog.PhotoURl" width="200" height="150" />
+                                <img class="blog-img" src="@blog.PhotoURl" width="200" height="150" />
                             </td>
                             <td>@blog.Category.Name</td>
                             <td>@blog.PublishDate</td>
                             <td>@blog.UpdateDate</td>
                             <td>
-                                <a blog-value="@blog.Id" class="btn btnSave btn-outline-danger" >Delete</a>
+                                <a blog-value="@blog.Id" class="btn btnSave btn-outline-danger delete-btn">Delete</a>
                                 <a class="btn btn-outline-warning" href="/dashboard/blog/edit/@blog.Id">Update</a>
-                           
+
                             </td>
                         </tr>
                     }
@@ -72,7 +176,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
-        $(".btnSave").click(function(e) {
+        $(".btnSave").click(function (e) {
 
             Swal.fire({
                 title: 'Are you sure?',

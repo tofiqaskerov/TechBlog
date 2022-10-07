@@ -67,11 +67,11 @@
 
                     <div class="blog-list clearfix">
                         @foreach (var blog in Model)
-                        {
+                        {   
                             <div class="blog-box row">
                                 <div class="col-md-4">
                                     <div class="post-media">
-                                        <a href="tech-single.html" title="">
+                                        <a asp-controller="">
                                             <img src="@blog.PhotoURl" alt="" class="img-fluid">
                                             <div class="hovereffect"></div>
                                         </a>
@@ -82,7 +82,7 @@
                                     <h4><a href="tech-single.html" title="">@blog.Title</a></h4>
                                     <p>@Html.Raw(blog.Description)</p>
                                     <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">@blog.Category.Name</a></small>
-                                    <small><a href="tech-single.html" title="">@blog.PublishDate</a></small>
+                                    <small><a href="tech-single.html" title="">@blog.PublishDate.Day  @blog.PublishDate.ToString("MMMM"), @blog.PublishDate.Year </a></small>
                                     <small><a href="tech-author.html" title="">by @blog.Author</a></small>
                                     <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> @blog.Hit</a></small>
                                 </div><!-- end meta -->
