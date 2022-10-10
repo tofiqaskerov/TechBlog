@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,14 @@ namespace DataAccess.Concrete.EntityFramework
         }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<User>().ToTable("users");
+            builder.Entity<IdentityRole>().ToTable("Roles");
+            base.OnModelCreating(builder);
+        }
     }
 }

@@ -64,13 +64,26 @@ namespace Business.Concrete
             }
         }
 
+        public Blog GetBlogIncludeCategory(int id)
+        {
+            try
+            {
+                var blog = _blogDal.GetBlogIncludeCategory(id);
+                return blog;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Blog GetById(int id)
         {
             try
             {
 
                 var blog = _blogDal.Get(x => x.Id == id);
-                blog.Hit += 1;
+                //blog.Hit += 1;
                 _blogDal.Update(blog);
                 return blog;
             }
@@ -90,7 +103,7 @@ namespace Business.Concrete
                 var oldBlog = _blogDal.Get(x =>x.Id == blog.Id);
                 blog.UpdateDate = DateTime.Now;
                 blog.PublishDate = oldBlog.PublishDate;
-                blog.Hit = 1;
+                
                 blog.SeoURL = "test";
                 _blogDal.Update(blog);
             }

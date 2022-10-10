@@ -101,6 +101,13 @@
       height: 4px;
       top: calc(50% - 2px);
     }
+
+    tr{
+        cursor:default; 
+    }
+    .btn-action{
+        margin-bottom: 10px;
+    }
 </style>
 
 
@@ -148,8 +155,8 @@
                     @foreach (var blog in Model)
                     {
                         <tr>
-                            <td>@blog.Title</td>
-                            <td>@Html.Raw(@blog.Description).....</td>
+                            <td>@blog.Title.Substring(0, 40) ...</td>
+                            <td>@Html.Raw(@blog.Description.Substring(0, 100))  .....</td>
                             <td>@blog.Author</td>
                             <td>@blog.Hit</td>
                             <td>
@@ -159,9 +166,9 @@
                             <td>@blog.PublishDate</td>
                             <td>@blog.UpdateDate</td>
                             <td>
-                                <a blog-value="@blog.Id" class="btn btnSave btn-outline-danger delete-btn">Delete</a>
-                                <a class="btn btn-outline-warning" href="/dashboard/blog/edit/@blog.Id">Update</a>
-
+                                <a blog-value="@blog.Id" class="btn btn-action btnSave btn-outline-danger delete-btn">Delete</a>
+                                <a class="btn btn-action btn-outline-warning"    href="/dashboard/blog/edit/@blog.Id">Update</a>
+                                <a class="btn btn-action btn-outline-primary"  href="/dashboard/blog/detail/@blog.Id">Detail</a>
                             </td>
                         </tr>
                     }

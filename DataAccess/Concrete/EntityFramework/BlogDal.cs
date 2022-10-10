@@ -19,7 +19,12 @@ namespace DataAccess.Concrete.EntityFramework
             var blogs = _context.Blogs.Include(x => x.Category).ToList();
             return blogs;
         }
-
+        public Blog GetBlogIncludeCategory(int id)
+        {
+            using var _context = new TechBlogDbContext();
+            var blog = _context.Blogs.Include(x => x.Category).FirstOrDefault();
+            return blog;
+        }
        
     }
 }

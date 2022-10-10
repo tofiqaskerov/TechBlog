@@ -12,6 +12,8 @@ namespace DataAccess.Abstract
     public interface IBlogDal : IEntitieRepository<Blog>
     {
         List<Blog> GetAllBlogIncludeCategory();
-   
+        Blog GetBlogIncludeCategory(int id);
+
+
     }
 }

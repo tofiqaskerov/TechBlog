@@ -285,3 +285,12 @@ E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Core.pdb
 E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\DataAccess.pdb
 E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Entities.pdb
 E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\Compar.Academy\csharp\Web\TechBlog\TechBlog\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

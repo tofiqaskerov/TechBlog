@@ -30,7 +30,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
         // GET: BlogController/Details/5
         public IActionResult Details(int id)
         {
-             
+
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
         {
 
 
-                string path = "/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
+                string path = "/main/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
                 using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     NewPhotoURL.CopyTo(fileStream);
@@ -87,7 +87,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
 
                 if (NewPhotoURL != null)
                 {
-                    string path = "/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
+                    string path = "/main/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
                     using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
                     {
                         NewPhotoURL.CopyTo(fileStream);
@@ -105,7 +105,11 @@ namespace TechBlog.Areas.Dashboard.Controllers
                 return View();
             }
         }
-
+        [HttpGet]
+        public IActionResult Detail(int id)
+        {
+            return View();
+        }
         // GET: BlogController/Delete/5
 
 
