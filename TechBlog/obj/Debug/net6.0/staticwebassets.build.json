@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "js3jSges6qUFvUw/33z14iSjV+++v1RhOZXHVGb0m9s=",
+  "Hash": "vAth6RHzUMjrXFXCCpEm1Y0hfRWTEznl4Y3WF2lLeII=",
   "Source": "TechBlog",
   "BasePath": "_content/TechBlog",
   "Mode": "Default",
@@ -39576,6 +39576,23 @@
       "OriginalItemSpec": "wwwroot\\main\\img\\9067837a-6316-4f6f-b3ec-3802e23f48edtech_blog_03.jpg"
     },
     {
+      "Identity": "E:\\Compar.Academy\\csharp\\Web\\TechBlog\\TechBlog\\wwwroot\\main\\img\\98b06931-b868-4d46-9a95-658e67bc0e58tech_blog_04.jpg",
+      "SourceId": "TechBlog",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Compar.Academy\\csharp\\Web\\TechBlog\\TechBlog\\wwwroot\\",
+      "BasePath": "_content/TechBlog",
+      "RelativePath": "main/img/98b06931-b868-4d46-9a95-658e67bc0e58tech_blog_04.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\img\\98b06931-b868-4d46-9a95-658e67bc0e58tech_blog_04.jpg"
+    },
+    {
       "Identity": "E:\\Compar.Academy\\csharp\\Web\\TechBlog\\TechBlog\\wwwroot\\main\\img\\98d73e1b-74a7-412b-b02f-50a4a8e45b7ftech_blog_02.jpg",
       "SourceId": "TechBlog",
       "SourceType": "Discovered",
@@ -39591,6 +39608,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\main\\img\\98d73e1b-74a7-412b-b02f-50a4a8e45b7ftech_blog_02.jpg"
+    },
+    {
+      "Identity": "E:\\Compar.Academy\\csharp\\Web\\TechBlog\\TechBlog\\wwwroot\\main\\img\\b3b0bddd-d0f0-4301-99a3-24c59cb95034tech_blog_03.jpg",
+      "SourceId": "TechBlog",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Compar.Academy\\csharp\\Web\\TechBlog\\TechBlog\\wwwroot\\",
+      "BasePath": "_content/TechBlog",
+      "RelativePath": "main/img/b3b0bddd-d0f0-4301-99a3-24c59cb95034tech_blog_03.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\img\\b3b0bddd-d0f0-4301-99a3-24c59cb95034tech_blog_03.jpg"
     },
     {
       "Identity": "E:\\Compar.Academy\\csharp\\Web\\TechBlog\\TechBlog\\wwwroot\\main\\img\\b8c9dfc0-a065-46f5-875c-a8bb30d10374page-header.jpg",

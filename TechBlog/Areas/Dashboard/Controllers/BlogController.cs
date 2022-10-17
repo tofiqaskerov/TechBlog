@@ -28,11 +28,15 @@ namespace TechBlog.Areas.Dashboard.Controllers
         }
 
         // GET: BlogController/Details/5
-        public IActionResult Details(int id)
+        [HttpGet]
+        public IActionResult Detail(int id)
         {
-
-            return View();
+            if (id == null) return NotFound();
+            var blog = _blogService.GetBlogIncludeCategory(id);
+            if (blog == null) return NotFound();
+            return View(blog);
         }
+        
 
         [HttpGet]
         public IActionResult Create()
@@ -105,11 +109,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
                 return View();
             }
         }
-        [HttpGet]
-        public IActionResult Detail(int id)
-        {
-            return View();
-        }
+        
         // GET: BlogController/Delete/5
 
 

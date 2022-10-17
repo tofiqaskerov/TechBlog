@@ -19,10 +19,14 @@ namespace TechBlog.Controllers
         {
             return View();
         }
-        
+
+        [HttpGet]
         public IActionResult Detail(int id)
         {
-            var blog = _blogService.GetBlogIncludeCategory(id);
+            if (id == null) return NotFound();
+
+            var blog = _blogService.Detail(id);
+            
             BlogDetailVM detailVM = new()
             {
                 Blog = blog

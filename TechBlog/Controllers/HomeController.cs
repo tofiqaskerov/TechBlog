@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TechBlog.Models;
+using TechBlog.ViewModels;
 
 namespace TechBlog.Controllers
 {
@@ -17,8 +18,16 @@ namespace TechBlog.Controllers
 
         public IActionResult Index()
         {
+            var popularBlogs = _blogService.GetPopularBlogs();
+            var lastThreeBlog = _blogService.GetLastThreeBlog();
             var blogs = _blogService.GetAllBlogIncludeCategory();
-            return View(blogs);
+            HomeVM vm = new()
+            {
+                LastBlogs = lastThreeBlog,
+                Blogs = blogs,
+                PopularBlogs = popularBlogs
+            };
+            return View(vm);
         }
 
         public IActionResult Privacy()
