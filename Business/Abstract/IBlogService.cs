@@ -22,5 +22,6 @@ namespace Business.Abstract
         List<Blog> GetAllBlogIncludeCategory();
         List<Blog> GetLastThreeBlog();
         List<PopularBlogDTO> GetPopularBlogs();
+        List<NextPrevBlogDTO> GetNextPrevBlog(int id); 
     }
 }

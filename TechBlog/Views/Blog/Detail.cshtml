@@ -42,7 +42,7 @@
 
                     <div class="blog-content">
                         <div class="pp">
-                           @Html.Raw(@Model.Blog.Description)
+                            @Html.Raw(@Model.Blog.Description)
 
                         </div><!-- end pp -->
 
@@ -340,29 +340,23 @@
                         <h2 class="widget-title">Popular Posts</h2>
                         <div class="blog-list-widget">
                             <div class="list-group">
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">5 Beautiful buildings you need..</h5>
-                                        <small>12 Jan, 2016</small>
-                                    </div>
-                                </a>
+                                @{
 
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_01.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Let's make an introduction for..</h5>
-                                        <small>11 Jan, 2016</small>
-                                    </div>
-                                </a>
 
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 last-item justify-content-between">
-                                        <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Did you see the most beautiful..</h5>
-                                        <small>07 Jan, 2016</small>
-                                    </div>
-                                </a>
+                                    foreach (var blog in Model.PopularBlogs)
+                                    {
+                                        var title = blog.Title.Length > 30 ? blog.Title.Substring(0, 30) + "..." : @blog.Title;
+                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="@blog.PhotoURL" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">@title</h5>
+                                                <small>@blog.PublishDate.Day  @blog.PublishDate.ToString("MMMM"), @blog.PublishDate.Year</small>
+                                            </div>
+                                        </a>
+
+                                    }
+                                }
+
                             </div>
                         </div><!-- end blog-list -->
                     </div><!-- end widget -->

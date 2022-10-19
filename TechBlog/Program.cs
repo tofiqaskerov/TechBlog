@@ -1,12 +1,39 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Business.Abstract;
+using Business.Concrete;
 using Business.DependencyResolvers.AutoFac;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(option =>
+{
+    var key = Encoding.ASCII.GetBytes("qsegrgserhwerhw5rhw5hw56wafq4wgo4gaoEagaEFgAege");
+    var issuer = "ComparAcademy";
+    var audience = "ComparAcademy";
+
+    option.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        RequireExpirationTime = true,
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidAudience = audience,
+        ValidIssuer = issuer,
+    };
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

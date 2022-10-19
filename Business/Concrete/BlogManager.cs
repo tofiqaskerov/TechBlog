@@ -123,6 +123,11 @@ namespace Business.Concrete
             }
         }
 
+        public List<NextPrevBlogDTO> GetNextPrevBlog(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<PopularBlogDTO> GetPopularBlogs()
         {
             try

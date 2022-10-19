@@ -26,10 +26,12 @@ namespace TechBlog.Controllers
             if (id == null) return NotFound();
 
             var blog = _blogService.Detail(id);
-            
+            var popularBlogs = _blogService.GetPopularBlogs();
+           
             BlogDetailVM detailVM = new()
             {
-                Blog = blog
+                Blog = blog,
+                PopularBlogs = popularBlogs
             };
             return View(detailVM);
         }
