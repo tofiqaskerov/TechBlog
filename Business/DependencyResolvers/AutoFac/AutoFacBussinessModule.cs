@@ -21,16 +21,6 @@ namespace Business.DependencyResolvers.AutoFac
             builder.RegisterType<CategoryDal>().As<ICategoryDal>();
             builder.RegisterType<CategoryManager>().As<ICategoryService>();
 
-
-            builder.RegisterType<AuthManager>().As<IAuthService>();
-
-            builder.RegisterType<UserManager>().As<IUserService>();
-            builder.RegisterType<UserDal>().As <IUserDal>();
-
-
-
-
-
         }
     }
 }

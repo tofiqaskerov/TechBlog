@@ -1,0 +1,22 @@
+﻿@model AddUserRoleVM
+
+<form method="post">
+    <div class="container">
+        
+        <div class="col-8 m-auto">
+
+            <div class="form-group">
+                <label>Position</label>
+                <select class="form-control" name="Role">
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            <input type="submit" value="Select" class="btn btn-outline-danger" />
+        </div>
+
+    </div>
+
+</form>

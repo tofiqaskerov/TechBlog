@@ -123,9 +123,17 @@ namespace Business.Concrete
             }
         }
 
-        public List<NextPrevBlogDTO> GetNextPrevBlog(int id)
+        public Blog GetNextBlog(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return  _blogDal.GetNextBlog(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<PopularBlogDTO> GetPopularBlogs()
@@ -133,6 +141,19 @@ namespace Business.Concrete
             try
             {
                 return _blogDal.GetPopularBlogs();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Blog GetPrevBlog(int id)
+        {
+            try
+            {
+                return _blogDal.GetPrevBlog(id);
             }
             catch (Exception)
             {

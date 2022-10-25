@@ -108,6 +108,12 @@
     .btn-action{
         margin-bottom: 10px;
     }
+    p{
+        margin:0px;
+    }
+    td{
+        text-align: center;
+    }
 </style>
 
 
@@ -123,7 +129,7 @@
 <div class="card shadow my-4">
 
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="width:100%">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -158,21 +164,21 @@
                             @{
                                 var title = blog.Title.Length > 60 ? blog.Title.Substring(0, 60) + "..." : @blog.Title;
                                 var description = blog.Description.Length > 100 ? blog.Description.Substring(0, 100) + "..." : @blog.Description;
-                                <td>@title</td>
-                                <td>@Html.Raw(description)</td>
-                                <td>@blog.Author</td>
-                                <td>@blog.Hit</td>
-                                <td>
-                                    <img class="blog-img" src="@blog.PhotoURl" width="200" height="150" />
-                                </td>
-                                <td>@blog.Category.Name</td>
-                                <td>@blog.PublishDate</td>
-                                <td>@blog.UpdateDate</td>
-                                <td>
-                                    <a blog-value="@blog.Id" class="btn btn-action btnSave btn-outline-danger delete-btn">Delete</a>
-                                    <a class="btn btn-action btn-outline-warning" href="/dashboard/blog/edit/@blog.Id">Update</a>
-                                    <a class="btn btn-action btn-outline-primary" href="/dashboard/blog/detail/@blog.Id">Detail</a>
-                                </td>
+                                                <td>@title</td>
+                                                <td>@Html.Raw(description)</td>
+                                                <td>@blog.Author</td>
+                                                <td>@blog.Hit</td>
+                                                <td>
+                                                    <img class="blog-img" src="@blog.PhotoURl" width="200" height="150" />
+                                                </td>
+                                                <td>@blog.Category.Name</td>
+                                                <td>@blog.PublishDate</td>
+                                                <td>@blog.UpdateDate</td>
+                                                <td>
+                                                    <a blog-value="@blog.Id" class="btn btn-action btnSave btn-outline-danger delete-btn">Delete</a>
+                                                    <a class="btn btn-action btn-outline-warning" href="/dashboard/blog/edit/@blog.Id">Update</a>
+                                                    <a class="btn btn-action btn-outline-primary" href="/dashboard/blog/detail/@blog.Id">Detail</a>
+                                                </td>
                             }
 
                         </tr>

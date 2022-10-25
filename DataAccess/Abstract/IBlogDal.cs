@@ -17,7 +17,8 @@ namespace DataAccess.Abstract
         List<Blog> GetLastThreeBlog();
         List<PopularBlogDTO> GetPopularBlogs();
 
-        NextPrevBlogDTO GetNextPrevBlog(int id);
+        Blog GetNextBlog(int id);
+        Blog GetPrevBlog(int id);
 
     }
 }

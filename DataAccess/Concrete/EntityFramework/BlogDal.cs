@@ -35,23 +35,27 @@ namespace DataAccess.Concrete.EntityFramework
             return lastThreeBlog;
         }
 
-        public NextPrevBlogDTO GetNextPrevBlog(int id)
+        public Blog GetNextBlog(int id)
         {
             using var _context = new TechBlogDbContext();
-            var nextBlog = _context.Blogs.SkipWhile(x => x.Id != id).Skip(1).First();
-            var prevBlog = _context.Blogs.TakeWhile(x => x.Id != id).Last();
-
-             
-            return null;   /// coming soon......///
-            
+            var selectedBlog = _context.Blogs.FirstOrDefault(x => x.Id == id);
+            var nextBlog = _context.Blogs.AsEnumerable().SkipWhile(x => x.Id == selectedBlog.Id).First();
+            return nextBlog;  
 
         }
-
+        public Blog GetPrevBlog(int id)
+        {
+            using var _context = new TechBlogDbContext();
+            var selectedBlog = _context.Blogs.FirstOrDefault(x => x.Id == id);
+            var prevBlog = _context.Blogs.AsEnumerable().OrderByDescending(x =>x.Id).SkipWhile(x => x.Id == selectedBlog.Id).First();
+            return prevBlog;
+        }
         public List<PopularBlogDTO> GetPopularBlogs()
         {
             using var _context = new TechBlogDbContext();
             var popularBlog = _context.Blogs.Include(x => x.Category).OrderByDescending(x => x.Hit).Select(b => new PopularBlogDTO
             {
+
                 Id = b.Id,
                 PhotoURL = b.PhotoURl,
                 Title = b.Title,
@@ -59,7 +63,8 @@ namespace DataAccess.Concrete.EntityFramework
             }).Take(3).ToList();
             return popularBlog;
 
-
         }
+
+      
     }
 }

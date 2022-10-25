@@ -11,10 +11,12 @@ namespace TechBlog.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IBlogService _blogService;
-        public HomeController(ILogger<HomeController> logger, IBlogService blogService)
+        private readonly ICategoryService _categoryService;
+        public HomeController(ILogger<HomeController> logger, IBlogService blogService, ICategoryService categoryService)
         {
             _logger = logger;
             _blogService = blogService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
@@ -22,11 +24,14 @@ namespace TechBlog.Controllers
             var popularBlogs = _blogService.GetPopularBlogs();
             var lastThreeBlog = _blogService.GetLastThreeBlog();
             var blogs = _blogService.GetAllBlogIncludeCategory();
+
+            var categories = _categoryService.GetAll();
             HomeVM vm = new()
             {
                 LastBlogs = lastThreeBlog,
                 Blogs = blogs,
-                PopularBlogs = popularBlogs
+                PopularBlogs = popularBlogs,
+                Categories = categories
             };
             return View(vm);
         }

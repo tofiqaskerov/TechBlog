@@ -2,6 +2,7 @@
 using Entities;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,24 +12,22 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class TechBlogDbContext : DbContext
+    public class TechBlogDbContext : IdentityDbContext<User>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TechBlogDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
+        
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<User> User { get; set; }
-        public DbSet<Role> Role { get; set; }
-        public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    base.OnModelCreating(builder);
-        //    builder.Entity<User>().ToTable("users");
-        //    builder.Entity<IdentityRole>().ToTable("Roles");
-        //    base.OnModelCreating(builder);
-        //}
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<User>().ToTable("users");
+            builder.Entity<IdentityRole>().ToTable("Roles");
+        }
     }
 }

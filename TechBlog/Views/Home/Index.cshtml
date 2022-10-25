@@ -1,7 +1,236 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
+    TechBlogDbContext _context = new();
+
 }
 @model HomeVM
+
+<header class="tech-header header">
+    <div class="container-fluid">
+        <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="tech-index.html"><img src="~/main/images/version/tech-logo.png" alt=""></a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech-index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                        <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
+                            <li>
+                                <div class="container">
+                                    <div class="">
+                                        <div class="tab">
+                                            @{
+                                                int num = 1;
+                                                foreach (var category in Model.Categories)
+                                                {
+                                                    <button class="tablinks @(num == 1 ? "active" : " ") " onclick="openCategory(event, 'cat@(num)')">@category.Name</button>
+                                                }
+                                                num++;
+                                            }
+
+                                            @*<button class="tablinks" onclick="openCategory(event, 'cat02')">Technology</button>
+                                            <button class="tablinks" onclick="openCategory(event, 'cat03')">Social Media</button>
+                                            <button class="tablinks" onclick="openCategory(event, 'cat04')">Car News</button>
+                                            <button class="tablinks" onclick="openCategory(event, 'cat05')">Worldwide</button>*@
+                                        </div>
+
+                                        <div class="tab-details clearfix">
+
+                                            <div id="cat1" class="tabcontent active ">
+                                                <div class="row">
+                                                    @{
+                                                        var blog1 = _context.Categories.FirstOrDefault(x => x.Name == "Gadgets");
+                                                        var categoryBlog = _context.Blogs.Include(x => x.Category).Where(x =>x.CategoryId == blog1.Id ).ToList();
+
+                                                        foreach (var item in categoryBlog)
+                                                        {
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                                <div class="blog-box">
+                                                                    <div class="post-media">
+                                                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">
+                                                                            <img src="@item.PhotoURl" alt="" class="img-fluid">
+                                                                            <div class="hovereffect">
+                                                                            </div><!-- end hover -->
+                                                                            <span class="menucat">@item.Category.Name</span>
+                                                                        </a>
+                                                                    </div><!-- end media -->
+                                                                    <div class="blog-meta">
+                                                                        <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">@item.Title</a></h4>
+                                                                    </div><!-- end meta -->
+                                                                </div><!-- end blog-box -->
+                                                            </div>
+                                                        }
+                                                    }
+                                                    
+                                                  
+
+                                                   
+
+                                                </div><!-- end row -->
+                                            </div>
+                                            <div id="cat2" class="tabcontent">
+                                                <div class="row">
+                                                 @{
+                                                      
+                                                        var blog2 = _context.Categories.FirstOrDefault(x => x.Name == "Technology");
+                                                        var categoryBlog1 = _context.Blogs.Include(x => x.Category).Where(x =>x.CategoryId == blog2.Id ).ToList();
+
+                                                        foreach (var item in categoryBlog1)
+                                                        {
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                                <div class="blog-box">
+                                                                    <div class="post-media">
+                                                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">
+                                                                            <img src="@item.PhotoURl" alt="" class="img-fluid">
+                                                                            <div class="hovereffect">
+                                                                            </div><!-- end hover -->
+                                                                            <span class="menucat">@item.Category.Name</span>
+                                                                        </a>
+                                                                    </div><!-- end media -->
+                                                                    <div class="blog-meta">
+                                                                        <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">@item.Title</a></h4>
+                                                                    </div><!-- end meta -->
+                                                                </div><!-- end blog-box -->
+                                                            </div>
+                                                        }
+                                                    }
+                                                   
+
+
+                                                </div><!-- end row -->
+                                            </div>
+                                            <div id="cat3" class="tabcontent">
+                                                <div class="row">
+                                                 @{
+                                                      
+                                                        var blog3 = _context.Categories.FirstOrDefault(x => x.Name == "Development");
+                                                        var categoryBlog2 = _context.Blogs.Include(x => x.Category).Where(x =>x.CategoryId == blog3.Id ).ToList();
+
+                                                        foreach (var item in categoryBlog2)
+                                                        {
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                                <div class="blog-box">
+                                                                    <div class="post-media">
+                                                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">
+                                                                            <img src="@item.PhotoURl" alt="" class="img-fluid">
+                                                                            <div class="hovereffect">
+                                                                            </div><!-- end hover -->
+                                                                            <span class="menucat">@item.Category.Name</span>
+                                                                        </a>
+                                                                    </div><!-- end media -->
+                                                                    <div class="blog-meta">
+                                                                        <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">@item.Title</a></h4>
+                                                                    </div><!-- end meta -->
+                                                                </div><!-- end blog-box -->
+                                                            </div>
+                                                        }
+                                                    }
+                                                 
+
+
+                                                </div><!-- end row -->
+                                            </div>
+                                            <div id="cat4" class="tabcontent">
+                                                <div class="row">
+                                                    @{
+
+                                                        var blog4 = _context.Categories.FirstOrDefault(x => x.Name == "Design");
+                                                        var categoryBlog3 = _context.Blogs.Include(x => x.Category).Where(x => x.CategoryId == blog4.Id).ToList();
+
+                                                        foreach (var item in categoryBlog3)
+                                                        {
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                                <div class="blog-box">
+                                                                    <div class="post-media">
+                                                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">
+                                                                            <img src="@item.PhotoURl" alt="" class="img-fluid">
+                                                                            <div class="hovereffect">
+                                                                            </div><!-- end hover -->
+                                                                            <span class="menucat">@item.Category.Name</span>
+                                                                        </a>
+                                                                    </div><!-- end media -->
+                                                                    <div class="blog-meta">
+                                                                        <h4><a asp-controller ="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">@item.Title</a>
+
+                                                            </h4>
+                                                                    </div><!-- end meta -->
+                                                                </div><!-- end blog-box -->
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div><!-- end row -->
+                                            </div>
+                                            <div id="cat5" class="tabcontent">
+                                                <div class="row">
+                                                    @{
+
+                                                        var blog5 = _context.Categories.FirstOrDefault(x => x.Name == "Materials");
+                                                        var categoryBlog4 = _context.Blogs.Include(x => x.Category).Where(x => x.CategoryId == blog5.Id).ToList();
+
+                                                        foreach (var item in categoryBlog4)
+                                                        {
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                                <div class="blog-box">
+                                                                    <div class="post-media">
+                                                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">
+                                                                            <img src="@item.PhotoURl" alt="" class="img-fluid">
+                                                                            <div class="hovereffect">
+                                                                            </div><!-- end hover -->
+                                                                            <span class="menucat">@item.Category.Name</span>
+                                                                        </a>
+                                                                    </div><!-- end media -->
+                                                                    <div class="blog-meta">
+                                                                        <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">@item.Title</a></h4>
+                                                                    </div><!-- end meta -->
+                                                                </div><!-- end blog-box -->
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div><!-- end row -->
+                                            </div>
+                                        </div><!-- end tab-details -->
+                                    </div><!-- end mega-menu-content -->
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech-category-01.html">Gadgets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech-category-02.html">Videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech-category-03.html">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech-contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-2">
+                    <li class="nav-item">
+                        <a style="width:35.7px; height: 30.6px;" class="nav-link" href="auth/login"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-android"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-apple"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div><!-- end container-fluid -->
+</header>
 <section class="section first-section">
     <div class="container-fluid">
         <div class="masonry-blog clearfix">

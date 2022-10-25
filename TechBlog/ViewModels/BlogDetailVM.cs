@@ -7,6 +7,9 @@ namespace TechBlog.ViewModels
     {
         public Blog Blog { get; set; } 
         public List<PopularBlogDTO>  PopularBlogs { get; set; }
+        public Blog NextBlog { get; set; }
+        public Blog PrevBlog { get; set; }
+        public List<Category> Categories { get; set; }
 
     }
 }

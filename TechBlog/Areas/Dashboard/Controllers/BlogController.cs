@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace TechBlog.Areas.Dashboard.Controllers
 {
     [Area("dashboard")]
+
     public class BlogController : Controller
     {
         private readonly IBlogService _blogService;

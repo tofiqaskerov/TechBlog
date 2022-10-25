@@ -9,6 +9,8 @@ namespace Entities.DTOs
 {
     public class NextPrevBlogDTO
     {
-        public List<Blog> NextPrevBlogs { get; set; }
+        public int Id { get; set; }
+        public string PhotoURl { get; set; }
+        public string Title { get; set; }
     }
 }

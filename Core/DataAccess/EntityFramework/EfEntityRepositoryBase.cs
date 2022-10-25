@@ -1,4 +1,6 @@
 ﻿using Core.Entity;
+using Core.Entity.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ namespace Core.DataAccess.EntityFramework
 {
     public class EfEntityRepositoryBase<TEntity, TContext> : IEntitieRepository<TEntity>
         where TEntity : class, IEntity, new()
-        where TContext : DbContext, new()
+        where TContext : IdentityDbContext<User>, new()
     {
         public void Add(TEntity entity)
         {
