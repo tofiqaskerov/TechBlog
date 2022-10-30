@@ -1,9 +1,14 @@
 ﻿using Business.Abstract;
+using Core.Entity.Models;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using TechBlog.Areas.Dashboard.ViewModels;
 
 namespace TechBlog.Areas.Dashboard.Controllers
 {
@@ -13,13 +18,16 @@ namespace TechBlog.Areas.Dashboard.Controllers
     {
         private readonly IBlogService _blogService;
         private readonly ICategoryService _categoryService;
+        private readonly IUserService _userService;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BlogController(IBlogService blogService, IWebHostEnvironment webHostEnvironment, ICategoryService categoryService)
+
+        public BlogController(IBlogService blogService, IWebHostEnvironment webHostEnvironment, ICategoryService categoryService, IUserService userService)
         {
             _blogService = blogService;
             _webHostEnvironment = webHostEnvironment;
             _categoryService = categoryService;
+            _userService = userService;
         }
 
         // GET: BlogController
@@ -38,40 +46,45 @@ namespace TechBlog.Areas.Dashboard.Controllers
             if (blog == null) return NotFound();
             return View(blog);
         }
-        
+
 
         [HttpGet]
         public IActionResult Create()
         {
             var categories = _categoryService.GetAll();
-            ViewData["Categories"] = categories;
-            return View();
+            var users = _userService.GetAll();
+            BlogCreateVM blogCreateVM = new()
+            {
+                Categories = categories,
+                Users = users
+            };
+            return View(blogCreateVM);
         }
 
         // POST: BlogController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public IActionResult Create(Blog blog, IFormFile NewPhotoURL)
         {
-
-
+  
+            try
+            {
                 string path = "/main/img/" + Guid.NewGuid() + NewPhotoURL.FileName;
                 using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     NewPhotoURL.CopyTo(fileStream);
                 }
-                try
-                {
-                    blog.PhotoURl = path;
-                    _blogService.Add(blog);
-                    return RedirectToAction(nameof(Index));
-                }
-                catch
-                {
-                    return View();
-                }
-            
-          
+                blog.PhotoURl = path;
+             
+                _blogService.Add(blog);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+
+
         }
 
         // GET: BlogController/Edit/5
@@ -80,7 +93,9 @@ namespace TechBlog.Areas.Dashboard.Controllers
         {
             var blog = _blogService.GetById(id);
             var categories = _categoryService.GetAll();
+            var users = _userService.GetAll();
             ViewData["Categories"] = categories;
+            ViewData["Users"] = users;
             return View(blog);
         }
 
@@ -111,7 +126,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
                 return View();
             }
         }
-        
+
         // GET: BlogController/Delete/5
 
 

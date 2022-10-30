@@ -33,8 +33,8 @@
                                                 }
                                                 num++;
                                             }
-
-                                            @*<button class="tablinks" onclick="openCategory(event, 'cat02')">Technology</button>
+@*
+                                            <button class="tablinks" onclick="openCategory(event, 'cat02')">Technology</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat03')">Social Media</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat04')">Car News</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat05')">Worldwide</button>*@
@@ -194,7 +194,7 @@
                                                     }
                                                 </div><!-- end row -->
                                             </div>
-                                        </div><!-- end tab-details -->
+                                        </div>
                                     </div><!-- end mega-menu-content -->
                                 </div>
                             </li>
@@ -254,7 +254,7 @@
                                         <span class="bg-orange"><a asp-controller="" asp-action="" asp-route-id="@blogs.Id" title="">@blogs.Category.Name</a></span>
                                         <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blogs.Id" title="">@title</a></h4>
                                         <small><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blogs.Id" title="">@blogs.PublishDate.Day  @blogs.PublishDate.ToString("MMMM"), @blogs.PublishDate.Year</a></small>
-                                        <small><a href="tech-author.html" title="">by @blogs.Author </a></small>
+                                        <small><a href="tech-author.html" title="">by @blogs.User.Name </a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
                             </div><!-- end shadow -->
@@ -297,10 +297,7 @@
 
                                 <div class="blog-meta big-meta col-md-8">
 
-
                                     @{
-
-
                                         var title = blog.Title.Length > 60 ? blog.Title.Substring(0, 60) + "..." : @blog.Title;
                                         var description = blog.Description.Length > 150 ? blog.Description.Substring(0, 150) + "..." : @blog.Description;
 
@@ -308,7 +305,7 @@
                                         <p> @Html.Raw(description) </p>
                                         <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">@blog.Category.Name</a></small>
                                         <small><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" title="">@blog.PublishDate.Day  @blog.PublishDate.ToString("MMMM"), @blog.PublishDate.Year </a></small>
-                                        <small><a href="tech-author.html" title="">by @blog.Author</a></small>
+                                        <small><a href="tech-author.html" title="">by @blog.User.Name </a></small>
                                         <small><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" title=""><i class="fa fa-eye"></i> @blog.Hit</a></small>
                                     }
 

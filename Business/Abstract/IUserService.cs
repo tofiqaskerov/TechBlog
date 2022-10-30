@@ -11,5 +11,6 @@ namespace Business.Abstract
     {
         void Add(User user);
         User GetByEmail(string email);
+        List<User> GetAll();
     }
 }

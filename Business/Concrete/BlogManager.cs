@@ -6,6 +6,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,9 @@ namespace Business.Concrete
                 blog.SeoURL = "test";
                 blog.PublishDate = DateTime.Now;
                 blog.UpdateDate = DateTime.Now;
+                blog.Author = "default";
+   
+                Console.WriteLine(blog.UserId.GetType());
                 _blogDal.Add(blog);
             }
             catch (Exception)
@@ -162,6 +166,19 @@ namespace Business.Concrete
             }
         }
 
+        public List<Blog> GetRandomBlogs(int id)
+        {
+            try
+            {
+                return _blogDal.GetRandomBlogs(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void Update(Blog blog)
         {
             try
@@ -171,6 +188,8 @@ namespace Business.Concrete
                 blog.PublishDate = oldBlog.PublishDate;
                 blog.Hit = oldBlog.Hit;
                 blog.SeoURL = "test";
+                blog.Author = "default";
+                oldBlog.UserId = blog.UserId;
                 _blogDal.Update(blog);
             }
             catch (Exception)
@@ -178,6 +197,18 @@ namespace Business.Concrete
 
                 throw;
             }
+        }
+
+        public void UpdateById(int id)
+        {
+            var blog = _blogDal.Get(x => x.Id == id);
+            var oldBlog = _blogDal.Get(x => x.Id == blog.Id);
+            blog.UpdateDate = DateTime.Now;
+            blog.PublishDate = oldBlog.PublishDate;
+            blog.Hit = oldBlog.Hit;
+            blog.SeoURL = "test";
+            _blogDal.Update(blog);
+
         }
     }
 }

@@ -13,10 +13,10 @@ namespace Business.Abstract
     {
         void Add(Blog blog);
         void Update(Blog blog);
+        void UpdateById(int id);
         void Delete(Blog blog);
         Blog Detail(int id);
         List<Blog> GetAll();
-
         Blog GetById(int id);
         Blog GetBlogIncludeCategory(int id);
         List<Blog> GetAllBlogIncludeCategory();
@@ -24,5 +24,6 @@ namespace Business.Abstract
         List<PopularBlogDTO> GetPopularBlogs();
         Blog GetNextBlog(int id);
         Blog GetPrevBlog(int id);
+        List<Blog> GetRandomBlogs(int id);
     }
 }

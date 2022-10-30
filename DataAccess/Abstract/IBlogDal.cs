@@ -19,6 +19,6 @@ namespace DataAccess.Abstract
 
         Blog GetNextBlog(int id);
         Blog GetPrevBlog(int id);
-
+        List<Blog> GetRandomBlogs(int id);
     }
 }

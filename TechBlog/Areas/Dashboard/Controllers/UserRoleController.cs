@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TechBlog.Areas.Dashboard.ViewModels;
-
+    
 namespace TechBlog.Areas.Dashboard.Controllers
 {
     [Area("dashboard")]
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     public class UserRoleController : Controller
     {
         private readonly UserManager<User> _userManager;

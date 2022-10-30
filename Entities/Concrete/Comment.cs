@@ -14,6 +14,7 @@ namespace Entities.Concrete
         public string Email { get; set; }
         public string Website { get; set; }
         public string Message { get; set; }
+  
 
     }
 }

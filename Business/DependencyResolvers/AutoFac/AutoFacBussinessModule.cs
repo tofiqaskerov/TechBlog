@@ -21,6 +21,15 @@ namespace Business.DependencyResolvers.AutoFac
             builder.RegisterType<CategoryDal>().As<ICategoryDal>();
             builder.RegisterType<CategoryManager>().As<ICategoryService>();
 
+            builder.RegisterType<UserManager>().As<IUserService>();
+
+            builder.RegisterType<BlogCommentDal>().As<IBlogCommentDal>();
+            builder.RegisterType<BlogCommentManager>().As<IBlogCommentService>();
+
+            builder.RegisterType<ContactDal>().As<IContactDal>();
+            builder.RegisterType<ContactManager>().As<IContactService>();
+
+
         }
     }
 }

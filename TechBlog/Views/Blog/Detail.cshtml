@@ -45,7 +45,7 @@
                                                 <div class="row">
                                                     @{
                                                         var blog1 = _context.Categories.FirstOrDefault(x => x.Name == "Gadgets");
-                                                        var categoryBlog = _context.Blogs.Include(x => x.Category).Where(x =>x.CategoryId == blog1.Id ).ToList();
+                                                        var categoryBlog = _context.Blogs.Include(x => x.Category).Where(x => x.CategoryId == blog1.Id).ToList();
 
                                                         foreach (var item in categoryBlog)
                                                         {
@@ -66,19 +66,19 @@
                                                             </div>
                                                         }
                                                     }
-                                                    
-                                                  
 
-                                                   
+
+
+
 
                                                 </div><!-- end row -->
                                             </div>
                                             <div id="cat2" class="tabcontent">
                                                 <div class="row">
-                                                 @{
-                                                      
+                                                    @{
+
                                                         var blog2 = _context.Categories.FirstOrDefault(x => x.Name == "Technology");
-                                                        var categoryBlog1 = _context.Blogs.Include(x => x.Category).Where(x =>x.CategoryId == blog2.Id ).ToList();
+                                                        var categoryBlog1 = _context.Blogs.Include(x => x.Category).Where(x => x.CategoryId == blog2.Id).ToList();
 
                                                         foreach (var item in categoryBlog1)
                                                         {
@@ -99,17 +99,17 @@
                                                             </div>
                                                         }
                                                     }
-                                                   
+
 
 
                                                 </div><!-- end row -->
                                             </div>
                                             <div id="cat3" class="tabcontent">
                                                 <div class="row">
-                                                 @{
-                                                      
+                                                    @{
+
                                                         var blog3 = _context.Categories.FirstOrDefault(x => x.Name == "Development");
-                                                        var categoryBlog2 = _context.Blogs.Include(x => x.Category).Where(x =>x.CategoryId == blog3.Id ).ToList();
+                                                        var categoryBlog2 = _context.Blogs.Include(x => x.Category).Where(x => x.CategoryId == blog3.Id).ToList();
 
                                                         foreach (var item in categoryBlog2)
                                                         {
@@ -130,7 +130,7 @@
                                                             </div>
                                                         }
                                                     }
-                                                 
+
 
 
                                                 </div><!-- end row -->
@@ -155,9 +155,10 @@
                                                                         </a>
                                                                     </div><!-- end media -->
                                                                     <div class="blog-meta">
-                                                                        <h4><a asp-controller ="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">@item.Title</a>
+                                                                        <h4>
+                                                                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id" title="">@item.Title</a>
 
-                                                            </h4>
+                                                                        </h4>
                                                                     </div><!-- end meta -->
                                                                 </div><!-- end blog-box -->
                                                             </div>
@@ -249,7 +250,7 @@
 
                         <div class="blog-meta big-meta">
                             <small><a href="tech-single.html" title="">@Model.Blog.PublishDate.Day  @Model.Blog.PublishDate.ToString("MMMM"), @Model.Blog.PublishDate.Year</a></small>
-                            <small><a href="tech-author.html" title="">BY @Model.Blog.Author</a></small>
+                            <small><a href="tech-author.html" title="">BY @Model.Blog.User.Name </a></small>
                             <small><a href="#" title=""><i class="fa fa-eye"></i>@Model.Blog.Hit</a></small>
                         </div><!-- end meta -->
 
@@ -339,14 +340,14 @@
                             <div class="col-lg-6">
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model.NextBlog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model.PrevBlog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between text-right">
-                                                <img src="@Model.NextBlog.PhotoURl" alt="" class="img-fluid float-right">
-                                                <h5 class="mb-1">@Model.NextBlog.Title</h5>
+                                                <img src="@Model.PrevBlog.PhotoURl" alt="" class="img-fluid float-right">
+                                                <h5 class="mb-1">@Model.PrevBlog.Title</h5>
                                                 <small>Prev Post</small>
                                             </div>
                                         </a>
-                                      
+
                                     </div>
                                 </div>
                             </div><!-- end col -->
@@ -354,10 +355,10 @@
                             <div class="col-lg-6">
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                         <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model.PrevBlog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model.NextBlog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between text-right">
-                                                <img src="@Model.PrevBlog.PhotoURl" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">@Model.PrevBlog.Title</h5>
+                                                <img src="@Model.NextBlog.PhotoURl" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">@Model.NextBlog.Title</h5>
                                                 <small>Next Post</small>
                                             </div>
                                         </a>
@@ -373,11 +374,11 @@
                         <h4 class="small-title">About author</h4>
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <img src="upload/author.jpg" alt="" class="img-fluid rounded-circle">
+                                <img src="@Model.Blog.User.PhotoURL" alt="" class="img-fluid rounded-circle">
                             </div><!-- end col -->
 
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                <h4><a href="#">Jessica</a></h4>
+                                <h4><a href="#">@Model.Blog.User.Name</a></h4>
                                 <p>Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet, consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget, finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Tech Blog!</p>
 
                                 <div class="topsocial">
@@ -398,24 +399,25 @@
                     <div class="custombox clearfix">
                         <h4 class="small-title">You may also like</h4>
                         <div class="row">
+
+
                             <div class="col-lg-6">
                                 <div class="blog-box">
                                     <div class="post-media">
                                         <a href="tech-single.html" title="">
-                                            <img src="upload/tech_menu_04.jpg" alt="" class="img-fluid">
+                                            <img src="" alt="" class="img-fluid">
                                             <div class="hovereffect">
                                                 <span class=""></span>
                                             </div><!-- end hover -->
                                         </a>
                                     </div><!-- end media -->
                                     <div class="blog-meta">
-                                        <h4><a href="tech-single.html" title="">We are guests of ABC Design Studio</a></h4>
-                                        <small><a href="blog-category-01.html" title="">Trends</a></small>
-                                        <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
+                                        <h4><a href="tech-single.html" title=""></a></h4>
+                                        <small><a href="blog-category-01.html" title=""></a></small>
+                                        <small><a href="blog-category-01.html" title=""></a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
-                            </div><!-- end col -->
-
+                            </div>
                             <div class="col-lg-6">
                                 <div class="blog-box">
                                     <div class="post-media">
@@ -489,12 +491,13 @@
                         <h4 class="small-title">Leave a Reply</h4>
                         <div class="row">
                             <div class="col-lg-12">
-                                <form class="form-wrapper">
-                                    <input type="text" class="form-control" placeholder="Your name">
-                                    <input type="text" class="form-control" placeholder="Email address">
-                                    <input type="text" class="form-control" placeholder="Website">
-                                    <textarea class="form-control" placeholder="Your comment"></textarea>
-                                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                <form id="contactForm" method="Post" class="form-wrapper">
+                                    <input type="text" name="Name" class="form-control" placeholder="Your name">
+                                    <input type="text" name="Email" class="form-control" placeholder="Email address">
+                                    <input type="text" name="Website" class="form-control" placeholder="Website">
+                             
+                                    <textarea class="form-control" name="Message" placeholder="Your comment"></textarea>
+                                    <button type="submit" id="submitButton" class="btn btn-primary">Submit Comment</button>
                                 </form>
                             </div>
                         </div>
@@ -683,3 +686,32 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        let button = document.getElementById("submitButton");
+        button.onclick = (e) => {
+            console.log("Hello World")
+            e.preventDefault()
+            var formData = $("#contactForm").serialize();
+            console.table(formData)
+            $.ajax({
+              
+                url: "/Blog/Comment",
+                data: formData,
+                success: function () {
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+}

@@ -41,8 +41,7 @@ namespace TechBlog.Areas.Dashboard.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             try
-            {
-               
+            {             
 
                 var role = await _roleManager.FindByIdAsync(id);
                 if (role == null) return NotFound();

@@ -17,20 +17,20 @@ namespace DataAccess.Concrete.EntityFramework
         public List<Blog> GetAllBlogIncludeCategory()
         {
             using var _context = new TechBlogDbContext();
-            var blogs = _context.Blogs.Include(x => x.Category).ToList();
+            var blogs = _context.Blogs.Include(x => x.Category).Include(x => x.User).ToList();
             return blogs;
         }
         public Blog GetBlogIncludeCategory(int id)
         {
             using var _context = new TechBlogDbContext();
-            var blog = _context.Blogs.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
+            var blog = _context.Blogs.Include(x => x.Category).Include(x =>x.User).FirstOrDefault(x => x.Id == id);
             return blog;
         }
 
         public List<Blog> GetLastThreeBlog()
         {
             using var _context = new TechBlogDbContext();
-            var lastThreeBlog = _context.Blogs.Include(x => x.Category).OrderByDescending(x => x.Id).Take(3).ToList();
+            var lastThreeBlog = _context.Blogs.Include(x => x.Category).Include(x =>x.User).OrderByDescending(x => x.Id).Take(3).ToList();
 
             return lastThreeBlog;
         }
@@ -65,6 +65,13 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
 
-      
+        public List<Blog> GetRandomBlogs(int id)
+        {
+            using var _context = new TechBlogDbContext();
+            var ran = new Random();
+            List<Blog> randomBlogs = _context.Blogs.OrderBy(x => ran.Next()).Take(2).ToList();
+            Console.WriteLine(randomBlogs);
+            return null; /// coming soon 
+        }
     }
 }

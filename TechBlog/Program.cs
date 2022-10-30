@@ -52,11 +52,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-int[] arr = { 20, 35,  55 };
 
-
-var nextBlog = arr.SkipWhile(x => x % 2 == 0).First();
-Console.WriteLine(nextBlog);
 
 
 app.Run();
