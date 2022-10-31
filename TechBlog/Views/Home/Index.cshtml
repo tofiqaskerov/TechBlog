@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="tech-index.html">Home</a>
+                        <a class="nav-link" asp-controller="Home">Home</a>
                     </li>
                     <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
@@ -210,7 +210,7 @@
                         <a class="nav-link" href="tech-category-03.html">Reviews</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tech-contact.html">Contact Us</a>
+                        <a class="nav-link"  asp-controller="Contact">Contact Us</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-2">
@@ -251,7 +251,7 @@
                             <div class="shadoweffect " style="height: 430.1px">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <span class="bg-orange"><a asp-controller="" asp-action="" asp-route-id="@blogs.Id" title="">@blogs.Category.Name</a></span>
+                                        <span class="bg-orange"><a asp-controller="Category" asp-action="Index" asp-route-id="@blogs.CategoryId" title="">@blogs.Category.Name</a></span>
                                         <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blogs.Id" title="">@title</a></h4>
                                         <small><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blogs.Id" title="">@blogs.PublishDate.Day  @blogs.PublishDate.ToString("MMMM"), @blogs.PublishDate.Year</a></small>
                                         <small><a href="tech-author.html" title="">by @blogs.User.Name </a></small>
@@ -303,7 +303,7 @@
 
                                         <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@title</a></h4>
                                         <p> @Html.Raw(description) </p>
-                                        <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">@blog.Category.Name</a></small>
+                                        <small class="firstsmall"><a class="bg-orange" asp-controller="Category" asp-action="Index" asp-route-id="@blog.CategoryId" title="">@blog.Category.Name</a></small>
                                         <small><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" title="">@blog.PublishDate.Day  @blog.PublishDate.ToString("MMMM"), @blog.PublishDate.Year </a></small>
                                         <small><a href="tech-author.html" title="">by @blog.User.Name </a></small>
                                         <small><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" title=""><i class="fa fa-eye"></i> @blog.Hit</a></small>

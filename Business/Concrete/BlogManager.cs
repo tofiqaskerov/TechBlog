@@ -97,6 +97,32 @@ namespace Business.Concrete
             }
         }
 
+        public List<Blog> GetByCategoryId(int id)
+        {
+            try
+            {
+                return _blogDal.GetAll(x => x.CategoryId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Blog> GetByCategoryIdIncludeCategory(int id)
+        {
+            try
+            {
+                return _blogDal.GetAllBlogIncludeByCategory(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public Blog GetById(int id)
         {
             try
@@ -166,11 +192,11 @@ namespace Business.Concrete
             }
         }
 
-        public List<Blog> GetRandomBlogs(int id)
+        public List<Blog> GetRelatedBlogs(int id)
         {
             try
             {
-                return _blogDal.GetRandomBlogs(id);
+                return _blogDal.GetRelatedBlogs(id);
             }
             catch (Exception)
             {

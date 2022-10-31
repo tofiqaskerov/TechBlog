@@ -9,6 +9,9 @@ namespace Business.Abstract
 {
     public interface IContactService
     {
+        void AddAsync(Contact contact);
+        void Delete(Contact contact);
+        Contact GetById(int id);
         List<Contact> GetAll();
     }
 }

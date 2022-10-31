@@ -18,6 +18,32 @@ namespace Business.Concrete
 			_contactDal = contactDal;
 		}
 
+		public void AddAsync(Contact contact)
+		{
+			try
+			{
+				_contactDal.AddAsync(contact);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+
+		public void Delete(Contact contact)
+		{
+			try
+			{
+				_contactDal.Delete(contact);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+
 		public List<Contact> GetAll()
         {
 			try
@@ -30,5 +56,18 @@ namespace Business.Concrete
 				throw;
 			}
         }
-    }
+
+		public Contact GetById(int id)
+		{
+			try
+			{
+				return _contactDal.Get(x => x.Id == id);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+	}
 }

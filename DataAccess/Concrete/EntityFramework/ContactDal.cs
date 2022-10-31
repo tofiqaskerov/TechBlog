@@ -11,5 +11,11 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class ContactDal : EfEntityRepositoryBase<Contact, TechBlogDbContext>, IContactDal
     {
+        public async void AddAsync(Contact contact)
+        {
+            using var _context = new TechBlogDbContext();
+            _context.Contacts.Add(contact);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="tech-index.html">Home</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
@@ -210,7 +210,7 @@
                         <a class="nav-link" href="tech-category-03.html">Reviews</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tech-contact.html">Contact Us</a>
+                        <a class="nav-link" asp-controller="Contact" asp-action="Index">Contact Us</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-2">
@@ -244,7 +244,7 @@
                             <li class="breadcrumb-item active">@Model.Blog.Title</li>
                         </ol>
 
-                        <span class="color-orange"><a href="tech-category-01.html" title="">@Model.Blog.Category.Name</a></span>
+                        <span class="color-orange"><a asp-controller="category" asp-action="Index" asp-route-id="@Model.Blog.CategoryId" title="">@Model.Blog.Category.Name</a></span>
 
                         <h3>@Model.Blog.Title</h3>
 
@@ -275,7 +275,7 @@
 
                         <img src="upload/tech_menu_09.jpg" alt="" class="img-fluid img-fullwidth">
 
-                        <div class="pp">
+                        <div class="pp @(Model.Blog.Id == 1017 ? "" : "d-none" )">
                             <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
 
                             <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
@@ -292,17 +292,89 @@
 
                             <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
 
-                            <p><img src="upload/tech_menu_10.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+                            <p><img src="~/main/seniorlar/sekine/s2.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
 
                             <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
 
 
                             <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
 
-                            <p><img src="upload/tech_menu_11.jpg" class="float-right" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+                            <p><img src="~/main/seniorlar/sekine/s3.jpg" class="float-right" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                            
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                            <p><img src="~/main/seniorlar/sekine/s4.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+                               
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                        </div><!-- end pp -->
+                        <div class="pp @(Model.Blog.Id == 1013 ? "" : "d-none" )">
+                            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                            <p>Morbi pharetra porta consequat. Aenean et diam sapien. <a href="#">Interdum et malesuada</a> fames ac ante ipsum primis in faucibus. Pellentesque dictum ligula iaculis, feugiat metus eu, sollicitudin ex. Quisque eu ullamcorper ligula. In vel ex ac purus finibus viverra. Maecenas pretium lobortis turpis. Fusce lacinia nisi in tortor massa nunc.</p>
+
+                            <ul class="check">
+                                <li>Integer sit amet odio ac lectus imperdiet elementum.</li>
+                                <li>Praesent vitae lacus sed lacus ullamcorper mollis.</li>
+                                <li>Donec vitae metus ac felis vulputate tincidunt non et ex.</li>
+                                <li>In dapibus sapien at viverra venenatis.</li>
+                                <li>Pellentesque mollis velit id maximus finibus.</li>
+                            </ul>
+
+                            <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
+
+                            <p><img src="~/main/seniorlar/Ayxan/a2.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
+
+
+                            <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                            <p><img src="~/main/seniorlar/Ayxan/a3.jpg" class="float-right" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                            <p><img src="~/main/seniorlar/Ayxan/a4.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
 
                             <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
                         </div><!-- end pp -->
+                        <div class="pp @(Model.Blog.Id == 1018 ? "" : "d-none" )">
+                            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                            <p>Morbi pharetra porta consequat. Aenean et diam sapien. <a href="#">Interdum et malesuada</a> fames ac ante ipsum primis in faucibus. Pellentesque dictum ligula iaculis, feugiat metus eu, sollicitudin ex. Quisque eu ullamcorper ligula. In vel ex ac purus finibus viverra. Maecenas pretium lobortis turpis. Fusce lacinia nisi in tortor massa nunc.</p>
+
+                            <ul class="check">
+                                <li>Integer sit amet odio ac lectus imperdiet elementum.</li>
+                                <li>Praesent vitae lacus sed lacus ullamcorper mollis.</li>
+                                <li>Donec vitae metus ac felis vulputate tincidunt non et ex.</li>
+                                <li>In dapibus sapien at viverra venenatis.</li>
+                                <li>Pellentesque mollis velit id maximus finibus.</li>
+                            </ul>
+
+                            <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
+
+                            <p><img src="~/main/seniorlar/Ruslan/r2.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
+
+
+                            <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                            <p><img src="~/main/seniorlar/Ruslan/r3.jpg" class="float-right" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                            <p><img src="~/main/seniorlar/Ruslan/r4.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+
+                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                        </div><!-- end pp -->
+
                     </div><!-- end content -->
 
                     <div class="blog-title-area">
@@ -342,7 +414,7 @@
                                     <div class="list-group">
                                         <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model.PrevBlog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between text-right">
-                                                <img src="@Model.PrevBlog.PhotoURl" alt="" class="img-fluid float-right">
+                                                <img style="height: 78.3px" src="@Model.PrevBlog.PhotoURl" alt="" class="img-fluid float-right">
                                                 <h5 class="mb-1">@Model.PrevBlog.Title</h5>
                                                 <small>Prev Post</small>
                                             </div>
@@ -357,7 +429,7 @@
                                     <div class="list-group">
                                         <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model.NextBlog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between text-right">
-                                                <img src="@Model.NextBlog.PhotoURl" alt="" class="img-fluid float-left">
+                                                <img style="height: 78.3px" src="@Model.NextBlog.PhotoURl" alt="" class="img-fluid float-left">
                                                 <h5 class="mb-1">@Model.NextBlog.Title</h5>
                                                 <small>Next Post</small>
                                             </div>
@@ -400,41 +472,31 @@
                         <h4 class="small-title">You may also like</h4>
                         <div class="row">
 
+                            @{
+                                @foreach (var blog in Model.RelatedBlogs)
+                                {
+                                    <div class="col-lg-6">
+                                        <div class="blog-box">
+                                            <div class="post-media">
+                                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" title="">
+                                                    <img style="height: 355.05px" src="@blog.PhotoURl" alt="" class="img-fluid">
+                                                    <div class="hovereffect">
+                                                        <span class=""></span>
+                                                    </div><!-- end hover -->
+                                                </a>
+                                            </div><!-- end media -->
+                                            <div class="blog-meta">
+                                                <h4><a  asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" title="">@blog.Title</a></h4>
+                                                <small><a  asp-controller="Category" asp-action="Detail" asp-route-id="@blog.CategoryId" title="">@blog.Category.Name</a></small>
+                                                <small><a asp-controller="Home" asp-action="Index" title="">@blog.PublishDate.Day  @blog.PublishDate.ToString("MMMM"), @blog.PublishDate.Year</a></small>
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
+                                    </div>
+                                }
 
-                            <div class="col-lg-6">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="tech-single.html" title="">
-                                            <img src="" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span class=""></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="tech-single.html" title=""></a></h4>
-                                        <small><a href="blog-category-01.html" title=""></a></small>
-                                        <small><a href="blog-category-01.html" title=""></a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="tech-single.html" title="">
-                                            <img src="upload/tech_menu_06.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span class=""></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="tech-single.html" title="">Nostalgia at work with family</a></h4>
-                                        <small><a href="blog-category-01.html" title="">News</a></small>
-                                        <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div><!-- end col -->
+                            }
+
+
                         </div><!-- end row -->
                     </div><!-- end custom-box -->
 
@@ -495,7 +557,7 @@
                                     <input type="text" name="Name" class="form-control" placeholder="Your name">
                                     <input type="text" name="Email" class="form-control" placeholder="Email address">
                                     <input type="text" name="Website" class="form-control" placeholder="Website">
-                             
+
                                     <textarea class="form-control" name="Message" placeholder="Your comment"></textarea>
                                     <button type="submit" id="submitButton" class="btn btn-primary">Submit Comment</button>
                                 </form>
@@ -507,13 +569,7 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
-                    <div class="widget">
-                        <div class="banner-spot clearfix">
-                            <div class="banner-img">
-                                <img src="upload/banner_07.jpg" alt="" class="img-fluid">
-                            </div><!-- end banner-img -->
-                        </div><!-- end banner -->
-                    </div><!-- end widget -->
+                   
 
                     <div class="widget">
                         <h2 class="widget-title">Trend Videos</h2>
@@ -521,7 +577,7 @@
                             <div class="blog-box">
                                 <div class="post-media">
                                     <a href="tech-single.html" title="">
-                                        <img src="upload/tech_video_01.jpg" alt="" class="img-fluid">
+                                        <img src="~/main/upload/tech_video_01.jpg" alt="" class="img-fluid">
                                         <div class="hovereffect">
                                             <span class="videohover"></span>
                                         </div><!-- end hover -->
@@ -537,7 +593,7 @@
                             <div class="blog-box">
                                 <div class="post-media">
                                     <a href="tech-single.html" title="">
-                                        <img src="upload/tech_video_02.jpg" alt="" class="img-fluid">
+                                        <img src="~/main/upload/tech_video_02 (1).jpg" alt="" class="img-fluid">
                                         <div class="hovereffect">
                                             <span class="videohover"></span>
                                         </div><!-- end hover -->
@@ -553,7 +609,7 @@
                             <div class="blog-box">
                                 <div class="post-media">
                                     <a href="tech-single.html" title="">
-                                        <img src="upload/tech_video_03.jpg" alt="" class="img-fluid">
+                                        <img src="~/main/upload/tech_video_03 (1).jpg" alt="" class="img-fluid">
                                         <div class="hovereffect">
                                             <span class="videohover"></span>
                                         </div><!-- end hover -->
@@ -595,47 +651,26 @@
                         <h2 class="widget-title">Recent Reviews</h2>
                         <div class="blog-list-widget">
                             <div class="list-group">
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_02.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
+                                @{
+                                    foreach (var blog in Model.PopularBlogs)
+                                    {
+                                        var title = blog.Title.Length > 30 ? blog.Title.Substring(0, 30) + "..." : @blog.Title;
 
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">10 practical ways to choose organic..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
-
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 last-item justify-content-between">
-                                        <img src="upload/tech_blog_07.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">We are making homemade ravioli..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
+                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="@blog.PhotoURL" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">@title</h5>
+                                                <span class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    }
+                                }
                             </div>
                         </div><!-- end blog-list -->
                     </div><!-- end widget -->
@@ -701,8 +736,8 @@
             var formData = $("#contactForm").serialize();
             console.table(formData)
             $.ajax({
-              
-                url: "/Blog/Comment",
+                type: "Post"
+                        url: "/Blog/Comment",
                 data: formData,
                 success: function () {
                     Swal.fire(

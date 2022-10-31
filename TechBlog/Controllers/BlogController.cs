@@ -35,6 +35,7 @@ namespace TechBlog.Controllers
             var nextBlog = _blogService.GetNextBlog(id);
             var prevBlog = _blogService.GetPrevBlog(id);
             var categories = _categoryService.GetAll();
+            var relatedBlog = _blogService.GetRelatedBlogs(id);
 
             BlogDetailVM detailVM = new()
             {
@@ -43,7 +44,7 @@ namespace TechBlog.Controllers
                 NextBlog = nextBlog,
                 PrevBlog = prevBlog,
                 Categories = categories,
-
+                RelatedBlogs = relatedBlog
             };
             return View(detailVM);
         }

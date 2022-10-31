@@ -10,7 +10,7 @@ namespace TechBlog.ViewModels
         public Blog NextBlog { get; set; }
         public Blog PrevBlog { get; set; }
         public List<Category> Categories { get; set; }
-        public List<Blog> RandomBlogs { get; set; }
+        public List<Blog> RelatedBlogs { get; set; }
 
     }
 }

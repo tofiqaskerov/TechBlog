@@ -65,13 +65,20 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
 
-        public List<Blog> GetRandomBlogs(int id)
+        public List<Blog> GetRelatedBlogs(int id)
         {
             using var _context = new TechBlogDbContext();
             var ran = new Random();
-            List<Blog> randomBlogs = _context.Blogs.OrderBy(x => ran.Next()).Take(2).ToList();
+            var randomBlogs = _context.Blogs.Include(x => x.Category).AsEnumerable().OrderBy(x => ran.Next()).Take(2).ToList();
             Console.WriteLine(randomBlogs);
-            return null; /// coming soon 
+            return randomBlogs; /// coming soon 
+        }
+
+        public List<Blog> GetAllBlogIncludeByCategory(int id)
+        {
+            using var _context = new TechBlogDbContext();
+            var blogs = _context.Blogs.Include(x => x.Category).Include(x => x.User).Where(x =>x.CategoryId == id).ToList();
+            return blogs;
         }
     }
 }

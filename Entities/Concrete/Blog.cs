@@ -21,7 +21,6 @@ namespace Entities.Concrete
         public int Hit { get; set; }
         public int CategoryId { get; set; } 
         public Category Category { get; set; }
-        
         public DateTime PublishDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public string SeoURL { get; set; }

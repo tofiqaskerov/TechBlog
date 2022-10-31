@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IContactDal : IEntitieRepository<Contact>
     {
+        void AddAsync(Contact contact);
     }
 }

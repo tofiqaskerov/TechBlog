@@ -1,0 +1,35 @@
+﻿@model Contact
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div class="card shadow my-4">
+    <div class="card-body">
+        <div class="col-md-12">
+            <form asp-action="Details" class="mt-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label">Subject</label>
+                    <div>
+                        <strong>@Model.Subject</strong>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label">Message</label>
+                    <div>
+                         @Model.Message
+                    </div>
+                   
+                </div>
+                <div class="mb-4">
+                    <a class="btn btn-success" href="/dashboard/contact">Return Index</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+</div>
+
+

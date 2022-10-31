@@ -18,12 +18,14 @@ namespace Business.Abstract
         Blog Detail(int id);
         List<Blog> GetAll();
         Blog GetById(int id);
+        List<Blog> GetByCategoryId(int id);
+        List<Blog> GetByCategoryIdIncludeCategory(int id);
         Blog GetBlogIncludeCategory(int id);
         List<Blog> GetAllBlogIncludeCategory();
         List<Blog> GetLastThreeBlog();
         List<PopularBlogDTO> GetPopularBlogs();
         Blog GetNextBlog(int id);
         Blog GetPrevBlog(int id);
-        List<Blog> GetRandomBlogs(int id);
+        List<Blog> GetRelatedBlogs(int id);
     }
 }
